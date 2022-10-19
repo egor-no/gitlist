@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import AboutMe from './pages/AboutMe';
 import RepoPage from './pages/RepoPage';
@@ -9,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>GitList: my repositories</h1>
+        <NavBar />
         <div id="page-body">
           <Routes>
             <Route path="/" element={<HomePage />} />
