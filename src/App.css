@@ -34,15 +34,15 @@ nav ul {
 
 nav li {
   display: inline-block;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 nav a {
   text-decoration: none;
   color: black;
   font-weight: bold;
-  padding: 24px 32px;
+  padding: 16px 32px;
 }
 
 nav a:hover {
@@ -53,18 +53,22 @@ nav a:hover {
 #page-body {
   max-width: 700px;
   margin: auto;
-  padding-top: 72px;
+  padding-top: 64px;
 }
 
-.article-list-item {
+.repo-list-item {
   text-decoration: none;
   color: black;
   padding: 16px 0 0 0;
 }
 
-.article-list-item p {
+.repo-list-item p {
   padding-bottom: 32px;
   border-bottom: 2px solid black;
+}
+
+.git-info p {
+  padding-bottom: 15px;
 }
 
 #add-comment-form {
@@ -76,7 +80,7 @@ nav a:hover {
   margin-bottom: 16px;
 }
 
-input, textarea {
+#add-comment-form input, textarea {
   display: block;
   width: 300px;
   padding: 8px;
@@ -85,12 +89,6 @@ input, textarea {
   font-size: 18px;
   border: 2px solid black;
   margin-bottom: 16px;
-}
-
-.error {
-  padding: 8px;
-  border-radius: 4px;
-  background-color: pink;
 }
 
 #add-comment-form button {
@@ -105,10 +103,4 @@ input, textarea {
 .comment {
   border-bottom: 2px solid black;
   padding: 16px;
-}
-
-.nav-right {
-  position: absolute;
-  top: 8px;
-  right: 8px;
 }
