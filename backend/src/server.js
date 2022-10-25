@@ -1,33 +1,25 @@
 import express from 'express';
-
-let reposInfo = [{
-    name: 'winylka',
-    stars: 0,
-    comments: [],
-},{
-    name: 'winylka-inventory',
-    stars: 0,
-    comments: [],
-},{
-    name: 'music-catalog',
-    stars: 0,
-    comments: [],
-},{
-    name: 'todo-react',
-    stars: 0,
-    comments: [],
-},{
-    name: 'clangametesttask',
-    stars: 0,
-    comments: [],
-},{
-    name: 'gitlist',
-    stars: 0,
-    comments: [],
-}]
+import { MongoClient } from 'mongodb';
 
 const app = express();
 app.use(express.json());
+
+app.get('/api/repos/:name', async (req, res) => {
+    const { name } = req.params; 
+
+    const client = new MongoClient('mongodb://127.0.0.1:27017');
+    await client.connect();
+
+    const db = client.db('react-repos-db'); //#endregion
+
+    const repo = await db.collection('repos').findOne({ name }); 
+
+    if (repo) {
+        res.json(repo); 
+    } else {
+        res.status(404).send('Repo is not found'); 
+    }
+});
 
 app.put('/api/repos/:name/star', (req, res) => {
     const { name } = req.params; 
