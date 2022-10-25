@@ -4,6 +4,7 @@
 /gitlist/node_modules
 /backend/node_modules
 /backend/mongo-db-data/diagnostic.data
+/backend/mongo-db-data/journal
 .pnp
 .pnp.js
 
