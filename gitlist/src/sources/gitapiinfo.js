@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"; 
 
-const ApiInfo = ({login}) => {
+function Getapiinfo(login) {
     const [data, setData] = useState(null); 
 
     useEffect(() => {
-        fetch(`https://api.github.com/repos/${login}/`)
+        fetch(`https://api.github.com/users/${login}/repos`)
         .then((response) => response.json())
         .then(setData); 
     }, []);
@@ -13,9 +13,7 @@ const ApiInfo = ({login}) => {
         return data; 
     };
 
-    return (
-        <></>
-    )
+    return [];
 }
 
-export default ApiInfo; 
+export default Getapiinfo;

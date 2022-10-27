@@ -67,8 +67,28 @@ nav a:hover {
   border-bottom: 2px solid black;
 }
 
+table {
+  border: 1px solid black; 
+  margin: 20px 0px 5px 0px; 
+  width: 100%;
+  padding: 1px;
+}
+
 .git-info p {
-  padding-bottom: 15px;
+  font-family: Helvetica Neue;
+  padding-bottom: 1px;
+  margin: 0px;
+  border: none; 
+}
+
+.git-info-date-td {
+  width: 30%;
+  text-align: right;
+}
+
+.git-info-link-td {
+  width: 30%;
+  text-align: left;
 }
 
 #add-comment-form {

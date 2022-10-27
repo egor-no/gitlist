@@ -1,16 +1,11 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import {db, connectToDB} from './db.js';
 
 const app = express();
 app.use(express.json());
 
 app.get('/api/repos/:name', async (req, res) => {
     const { name } = req.params; 
-
-    const client = new MongoClient('mongodb://127.0.0.1:27017');
-    await client.connect();
-
-    const db = client.db('react-repos-db'); //#endregion
 
     const repo = await db.collection('repos').findOne({ name }); 
 
@@ -21,31 +16,41 @@ app.get('/api/repos/:name', async (req, res) => {
     }
 });
 
-app.put('/api/repos/:name/star', (req, res) => {
+app.put('/api/repos/:name/star', async (req, res) => {
     const { name } = req.params; 
-    const repo = reposInfo.find(r => r.name === name);
+
+    await db.collection('repos').updateOne({ name }, {
+        $inc: { stars: 1},
+    });
+
+    const repo = await db.collection('repos').findOne({ name }); 
+
     if (repo) {
-        repo.stars += 1;
         res.send(`The ${name} repo now has ${repo.stars} stars`);
     } else {
         res.send('That repo doesn\'t exist :('); 
     }
 });
 
-app.post('/api/repos/:name/comments', (req,res) => {
+app.post('/api/repos/:name/comments', async (req,res) => {
     const { postedBy, text } = req.body; 
     const { name } = req.params; 
 
-    const repo = reposInfo.find(r => r.name === name);
+    await db.collection('repos').updateOne({ name }, {
+        $push: {comments: {postedBy, text} },
+    });
+
+    const repo = await db.collection('repos').findOne({ name }); 
 
     if (repo) {
-        repo.comments.push({ postedBy, text });
         res.send(repo.comments);
     } else {
         res.send('That repo doesn\'t exist :('); 
     }
 });
 
-app.listen(8000, () => {
-    console.log('Server is listening on port 8000');
-});
+connectToDB(() => {
+    app.listen(8000, () => {
+        console.log('Server is listening on port 8000');
+    });
+})
