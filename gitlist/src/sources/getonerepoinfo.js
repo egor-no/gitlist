@@ -7,13 +7,13 @@ function Getrepogitinfo(login, repo) {
         fetch(`https://api.github.com/repos/${login}/${repo}`)
         .then((response) => response.json())
         .then(setData); 
-    }, "");
+    }, []);
 
     if (data) {
         return data; 
     };
 
-    return "";
+    return [];
 }
 
 export default Getrepogitinfo; 

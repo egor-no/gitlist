@@ -91,6 +91,14 @@ table {
   text-align: left;
 }
 
+.stars {
+  margin-top: 0px;
+}
+
+.article-header {
+  margin-bottom: 9px;
+}
+
 #add-comment-form {
   border-bottom: 2px solid black;
   padding: 16px;
