@@ -26,7 +26,7 @@ app.put('/api/repos/:name/star', async (req, res) => {
     const repo = await db.collection('repos').findOne({ name }); 
 
     if (repo) {
-        res.send(`The ${name} repo now has ${repo.stars} stars`);
+        res.json(repo);
     } else {
         res.send('That repo doesn\'t exist :('); 
     }
@@ -43,7 +43,23 @@ app.post('/api/repos/:name/comments', async (req,res) => {
     const repo = await db.collection('repos').findOne({ name }); 
 
     if (repo) {
-        res.send(repo.comments);
+        res.json(repo);
+    } else {
+        res.send('That repo doesn\'t exist :('); 
+    }
+});
+
+app.delete('/api/repos/:name/comments/', async (req,res) => {
+    const { name } = req.params; 
+
+    await db.collection('repos').updateOne({ name }, {
+       "$set": {'comments': [] }
+    });
+
+    const repo = await db.collection('repos').findOne({ name }); 
+
+    if (repo) {
+        res.json(repo);
     } else {
         res.send('That repo doesn\'t exist :('); 
     }

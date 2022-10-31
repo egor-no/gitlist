@@ -4,9 +4,9 @@ body {
 }
 
 button {
-  padding: 16px;
+  padding: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   background-color: black;
   color: white;
   border-radius: 8px;
@@ -119,16 +119,29 @@ table {
   margin-bottom: 16px;
 }
 
+#add-comment-form label {
+  font-size: 14px;
+  margin-left: 1px;
+}
+
 #add-comment-form button {
   width: 320px;
 }
 
-#upvotes-section button, p {
+#stars-section button, p {
   display: inline-block;
   margin-right: 16px;
+}
+
+#stars-section button {
+  font-size: 20px;
 }
 
 .comment {
   border-bottom: 2px solid black;
   padding: 16px;
+}
+
+.formError {
+  color: orangered;
 }
