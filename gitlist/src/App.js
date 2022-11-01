@@ -7,6 +7,8 @@ import RepoPage from './pages/RepoPage';
 import Contacts from './pages/Contacts';
 import Repa from './pages/Repa';
 import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
+import CreateAccountPage from './pages/CreateAccountPage';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/repa" element={<Repa />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/repos/:repoId" element={<RepoPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/sign-up" element={<CreateAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

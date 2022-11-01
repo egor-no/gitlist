@@ -108,7 +108,7 @@ table {
   margin-bottom: 16px;
 }
 
-#add-comment-form input, textarea {
+input, textarea {
   display: block;
   width: 300px;
   padding: 8px;
