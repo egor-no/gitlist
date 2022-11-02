@@ -133,10 +133,6 @@ input, textarea {
   margin-right: 16px;
 }
 
-#stars-section button {
-  font-size: 20px;
-}
-
 .comment {
   border-bottom: 2px solid black;
   padding: 16px;
@@ -144,4 +140,10 @@ input, textarea {
 
 .formError {
   color: orangered;
+}
+
+.nav-right {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
